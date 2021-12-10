@@ -1,0 +1,58 @@
+//Test3
+
+package org.example;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChomeDriver;
+import org.openqa.Assert;
+import org.testing.annotations.Test;
+
+public class TesteggTimer {
+
+WebDriver driver;
+int sec=25;
+
+@Test
+public void testTimer(){
+System.setProerty("webdriver.chrome.driver",
+System.grtProerty("user.dir")+ "/"+ "src/main/resource/chromedriver_mac");
+driver = new ChromeDriver();
+driver.get(""https://e.ggtimer.com/");
+//verify page is loaded completely
+
+Assert.assertTrue(driver.findElement(By.xpath("//*[@id='root'/div/div/div[2]]"))
+/main/div/[1]")).isDisplayed());
+driver.findElement(By.id("EggTimer-start-time-input-text")).sendKeys(...keysToSend: sec + "Sec");
+driver.findElement(By.xpath("//button[text()='start']")).click();
+Assert.asserTrue(checkTimer());
+}
+public boolean checkTimer()
+{
+int x=0;
+System.out.println("Started timer");
+while(x < sec) {
+try{
+String text =driver.findElement(By.xath("//*[@id='root']/div/main/div[1]/div/div[2]/p/san")).getText();
+if(text != "0")
+{
+return true;
+}
+
+}catch(Excetion e){
+System.out.println("Waiting for timer...");
+}
+try{
+Thread.sleep(milli: 1000);
+}catch(Excetion e){
+e.printStackTrace();
+}
+X++;
+}
+System.out.println("Timer comleted");
+return false;
+}
+}
+
+
+}
